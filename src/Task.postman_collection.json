@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "5ec0a24a-42a0-4892-910d-8b4e71ec4865",
+		"name": "Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30342070",
+		"_collection_link": "https://mitchdesigns-team.postman.co/workspace/Team-Workspace~3e1bd0d9-e94e-4d10-8050-b97cebc3acf3/collection/30342070-5ec0a24a-42a0-4892-910d-8b4e71ec4865?action=share&source=collection_link&creator=30342070"
+	},
+	"item": [
+		{
+			"name": "https://woosonicpwa.com/MitchAPI/filter.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "postman"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "cookieName=cookieValue"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\": \"\", //for filter specific category\n    \"price_range\": [\n        0, \n        100000000\n    ], // for filter price range\n    \"products_per_page\": 20, // per page\n    \"page\": 1, // page number\n    \"sort\": {\n        \"criteria\": \"date\",\n        \"arrangement\": \"DESC\"\n    },\n    \"keyword\": \"\" // keyword to search products (title, description)\n}"
+				},
+				"url": {
+					"raw": "https://woosonicpwa.com/MitchAPI/filter.php",
+					"protocol": "https",
+					"host": [
+						"woosonicpwa",
+						"com"
+					],
+					"path": [
+						"MitchAPI",
+						"filter.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
