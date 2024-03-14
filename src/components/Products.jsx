@@ -16,7 +16,7 @@ export const Products = () => {
   const [searchItem] = useContext(searchContext)
   const [itemsNumber, setItemsNumber] = useState(1)
   const [categoryChoose] = useContext(categoryContext)
-  const { data, isPending, error, hasMoreItems } = getCategory(
+  const { filteredData, isPending, error, hasMoreItems } = getCategory(
     categoryChoose,
     itemsNumber,
     searchItem
@@ -50,8 +50,9 @@ export const Products = () => {
       {error && <div>Error in server </div>}
       <Container>
         <Row xs={1} sm={1} md={3} lg={4} className='g-4'>
-          {data &&
-            data.map((item) => (
+          {filteredData?.length === 0 ? 'no items ' : ''}
+          {filteredData &&
+            filteredData.map((item) => (
               <Col key={item.id}>
                 <div className='product'>
                   <div className='product-head'>
@@ -86,17 +87,16 @@ export const Products = () => {
                     </p>
 
                     <div className='buttons'>
-                      {addedToCartMap[item.id] ? (
-                        <AddToCard />
-                      ) : (
-                        <button
-                          className='button-cart'
-                          onClick={() => handleAddToCartAction(item.id)}
-                        >
-                          اضف الى السلة
-                        </button>
-                      )}
-                      <button className='button-icon' >
+                      {console.log(addedToCartMap[item.id])}
+
+                      <button
+                        className='button-cart'
+                        onClick={() => handleAddToCartAction(item.id)}
+                      >
+                        اضف الى السلة
+                      </button>
+
+                      <button className='button-icon'>
                         <FavoriteIcon className='love-btn' />
                       </button>
                     </div>

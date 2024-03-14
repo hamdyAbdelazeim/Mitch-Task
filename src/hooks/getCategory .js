@@ -1,8 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-
 export const getCategory = (categoryChoose, itemsNumber, searchItem) => {
-  console.log(searchItem)
-
   const { isPending, error, data } = useQuery({
     queryKey: ['getCategory', categoryChoose, itemsNumber, searchItem],
     queryFn: () =>
@@ -26,8 +23,12 @@ export const getCategory = (categoryChoose, itemsNumber, searchItem) => {
         }),
       }).then((res) => res.json()),
   })
+  console.log(searchItem)
   // Check if there are more items available
   const hasMoreItems = data?.length >= itemsNumber * 12
+  const filteredData = data?.filter((item) => item.name.includes(searchItem))
 
-  return { data, isPending, error, hasMoreItems }
+  console.log(filteredData)
+  console.log(filteredData?.length)
+  return { filteredData, isPending, error, hasMoreItems }
 }
